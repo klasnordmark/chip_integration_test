@@ -1,0 +1,49 @@
+CAPI=2:
+
+name : ::chip_integration_test:1.0.0
+
+filesets:
+    padframe:
+        files:
+            - src/padframe/rtl/defines.v
+            - src/padframe/rtl/pads.v
+            - src/padframe/rtl/chip_io.v
+            - src/padframe/params.tcl : {file_type : tclSource}
+            - src/padframe/interactive.tcl : {file_type : tclSource}
+            - src/padframe/padframe.cfg : {file_type : cfgSource}
+            - src/padframe/blackbox/sky130_fd_io__top_xres4v2.v : {file_type : verilogBlackbox}
+        file_type : verilogSource
+
+    core:
+        files:
+            - src/core/params.tcl : {file_type : tclSource}
+        depend : [test_core]
+
+    chip:
+        files:
+            - src/chip/rtl/chip.v : {file_type : verilogSource}
+            - src/chip/params.tcl
+            - src/chip/interactive.tcl
+        file_type : tclSource
+
+targets:
+    padframe:
+        default_tool : openlane
+        filesets : [padframe]
+        toplevel : chip_io
+        tools:
+            openlane:
+                interactive_name : interactive.tcl
+
+    core:
+        default_tool : openlane
+        filesets : [core]
+        toplevel : testdesign
+
+    chip:
+        default_tool : openlane
+        filesets : [chip]
+        toplevel : chip
+        tools:
+            openlane:
+                interactive_name : interactive.tcl

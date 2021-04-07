@@ -1,0 +1,23 @@
+CAPI=2:
+
+name : ::test_core:1.0.0
+
+filesets:
+    core:
+        files:
+            - src/rtl/testdesign.v
+        file_type : verilogSource
+
+    config:
+        files:
+            - src/params.tcl
+        file_type : tclSource
+
+targets:
+    default:
+        filesets : [core]
+
+    build:
+        default_tool : openlane
+        filesets : [core, config]
+        toplevel : testdesign
