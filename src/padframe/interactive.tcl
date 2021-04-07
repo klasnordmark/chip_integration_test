@@ -14,7 +14,6 @@
 # SPDX-License-Identifier: Apache-2.0
 
 package require openlane
-#set script_dir [file dirname [file normalize [info script]]]
 set script_dir [pwd]
 set save_path $script_dir
 set src_dir [file dirname [file normalize [info script]]]
@@ -143,8 +142,6 @@ label_macro_pins\
 
 
 run_magic
-
-# run_magic_drc
 
 save_views       -lef_path $::env(magic_result_file_tag).lef \
                  -def_path $::env(CURRENT_DEF) \

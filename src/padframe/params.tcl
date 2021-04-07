@@ -6,9 +6,6 @@ set ::env(SYNTH_FLAT_TOP) 1
 set ::env(USE_GPIO_PADS) 1
 set ::env(FP_SIZING) absolute
 set ::env(DIE_AREA) "0 0 3588 5188"
-#set fd [open "$script_dir/../chip_dimensions.txt" "r"]
-#set ::env(DIE_AREA) [read $fd]
-#close $fd
 set ::env(MAGIC_WRITE_FULL_LEF) 1
 set ::env(DIODE_INSERTION_STRATEGY) 0
 set ::env(GLB_RT_TILES) 30
