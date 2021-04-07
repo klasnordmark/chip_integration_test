@@ -1,0 +1,1 @@
+Just a test repository for doing simple chip integration with Fusesoc.
