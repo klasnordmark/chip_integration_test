@@ -26,6 +26,16 @@ filesets:
             - src/chip/interactive.tcl
         file_type : tclSource
 
+    staticchip:
+      files:
+        - prebuilt/core/lef/testdesign.lef : {file_type : LEF}
+        - prebuilt/core/verilog/gl/testdesign.v : {file_type : verilogBlackbox}
+        - prebuilt/padframe/lef/chip_io.lef : {file_type : LEF}
+        - prebuilt/padframe/verilog/gl/chip_io.v : {file_type : verilogBlackbox}
+        - src/chip/rtl/chip.v : {file_type : verilogSource}
+        - src/staticchip/params.tcl : {file_type : tclSource}
+        - src/staticchip/interactive.tcl : {file_type : tclSource}
+
 targets:
     padframe:
         default_tool : openlane
@@ -43,6 +53,14 @@ targets:
     chip:
         default_tool : openlane
         filesets : [chip]
+        toplevel : chip
+        tools:
+            openlane:
+                interactive_name : interactive.tcl
+
+    staticchip:
+        default_tool : openlane
+        filesets : [staticchip]
         toplevel : chip
         tools:
             openlane:
