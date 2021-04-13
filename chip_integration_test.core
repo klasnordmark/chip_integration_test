@@ -9,7 +9,7 @@ filesets:
             - src/padframe/rtl/pads.v
             - src/padframe/rtl/chip_io.v
             - src/padframe/params.tcl : {file_type : tclSource}
-            - src/padframe/interactive.tcl : {file_type : tclSource}
+            - src/padframe/interactive.tcl : {file_type : interactive}
             - src/padframe/padframe.cfg : {file_type : cfgSource}
             - src/padframe/blackbox/sky130_fd_io__top_xres4v2.v : {file_type : verilogBlackbox}
         file_type : verilogSource
@@ -23,7 +23,7 @@ filesets:
         files:
             - src/chip/rtl/chip.v : {file_type : verilogSource}
             - src/chip/params.tcl
-            - src/chip/interactive.tcl
+            - src/chip/interactive.tcl : {file_type : interactive}
         file_type : tclSource
 
     staticchip:
@@ -34,16 +34,13 @@ filesets:
         - prebuilt/padframe/verilog/gl/chip_io.v : {file_type : verilogBlackbox}
         - src/chip/rtl/chip.v : {file_type : verilogSource}
         - src/staticchip/params.tcl : {file_type : tclSource}
-        - src/staticchip/interactive.tcl : {file_type : tclSource}
+        - src/staticchip/interactive.tcl : {file_type : interactive}
 
 targets:
     padframe:
         default_tool : openlane
         filesets : [padframe]
         toplevel : chip_io
-        tools:
-            openlane:
-                interactive_name : interactive.tcl
 
     core:
         default_tool : openlane
@@ -54,14 +51,8 @@ targets:
         default_tool : openlane
         filesets : [chip]
         toplevel : chip
-        tools:
-            openlane:
-                interactive_name : interactive.tcl
 
     staticchip:
         default_tool : openlane
         filesets : [staticchip]
         toplevel : chip
-        tools:
-            openlane:
-                interactive_name : interactive.tcl
