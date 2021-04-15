@@ -1,9 +1,4 @@
-package require openlane
 set script_dir [pwd]
-prep -design $script_dir -tag chip -overwrite
-set save_path $script_dir
-
-puts stdout [file isdirectory $script_dir/../padframe-openlane]
 
 if {[file isdirectory $script_dir/../padframe-openlane] != 1} {
     puts stderr "Padframe must be built."
@@ -33,13 +28,3 @@ li1_hack_start
 global_routing
 detailed_routing
 li1_hack_end
-
-run_magic
-
-save_views       -lef_path $::env(magic_result_file_tag).lef \
-                 -def_path $::env(tritonRoute_result_file_tag).def \
-                 -gds_path $::env(magic_result_file_tag).gds \
-                 -mag_path $::env(magic_result_file_tag).mag \
-				 -verilog_path $::env(CURRENT_NETLIST) \
-                 -save_path $save_path \
-                 -tag $::env(RUN_TAG)

@@ -23,7 +23,7 @@ filesets:
         files:
             - src/chip/rtl/chip.v : {file_type : verilogSource}
             - src/chip/params.tcl
-            - src/chip/interactive.tcl : {file_type : interactive}
+            - src/chip/presynthesis.tcl
         file_type : tclSource
 
     staticchip:

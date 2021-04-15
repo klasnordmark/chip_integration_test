@@ -34,3 +34,14 @@ set ::env(GLB_RT_TILES) 30
 set ::env(GLB_RT_MAXLAYER) 5
 set ::env(FILL_INSERTION) 0
 set ::env(LVS_INSERT_POWER_PINS) 0
+
+set ::env(RUN_SYNTHESIS) 0
+set ::env(RUN_FLOORPLAN) 0
+set ::env(RUN_PLACEMENT) 0
+set ::env(RUN_CTS) 0
+set ::env(RUN_ROUTING) 0
+set ::env(RUN_POWERED_VERILOG) 0
+set ::env(RUN_DRC) 0
+set ::env(RUN_LVS) 0
+set ::env(RUN_ANTENNA) 0
+set ::env(REPORT) 0
